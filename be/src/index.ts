@@ -1,5 +1,5 @@
-require("dotenv").config();
-import express from "express";
+import 'dotenv/config';
+import express, { Request, Response } from "express";
 import Anthropic from "@anthropic-ai/sdk";
 import { BASE_PROMPT, getSystemPrompt } from "./prompts";
 import { ContentBlock, TextBlock } from "@anthropic-ai/sdk/resources";
@@ -7,12 +7,22 @@ import {basePrompt as nodeBasePrompt} from "./defaults/node";
 import {basePrompt as reactBasePrompt} from "./defaults/react";
 import cors from "cors";
 
-const anthropic = new Anthropic();
+const anthropic = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY
+});
+
 const app = express();
-app.use(cors())
+
+// Configure CORS
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json())
 
-app.post("/template", async (req, res) => {
+app.post("/template", async (req: Request, res: Response) => {
     const prompt = req.body.prompt;
     
     const response = await anthropic.messages.create({
@@ -46,7 +56,7 @@ app.post("/template", async (req, res) => {
 
 })
 
-app.post("/chat", async (req, res) => {
+app.post("/chat", async (req: Request, res: Response) => {
     const messages = req.body.messages;
     const response = await anthropic.messages.create({
         messages: messages,
@@ -62,5 +72,14 @@ app.post("/chat", async (req, res) => {
     });
 })
 
-app.listen(3000);
+// Start the server if this file is run directly
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+// Export the Express API
+export default app;
 
