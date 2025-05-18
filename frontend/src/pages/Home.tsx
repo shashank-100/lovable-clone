@@ -5,6 +5,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Card } from '../components/ui/card';
 import Footer from '../components/footer';
+import logo from '../../download.jpg';
 
 export function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -25,7 +26,7 @@ export function Home() {
     <div className="min-h-screen bg-gradient-to-b from-blue-100 via-pink-100 to-orange-100 flex flex-col">
       <header className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="h-6 w-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-md"></div>
+          <img src={logo} alt="Lovable logo" className="h-6 w-6 rounded-md object-cover" />
           <span className="font-bold text-xl">Lovable</span>
         </div>
         <div className="flex gap-2">
