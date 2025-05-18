@@ -26,7 +26,7 @@ export function Home() {
       <header className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="h-6 w-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-md"></div>
-          <span className="font-bold text-xl">Bolt</span>
+          <span className="font-bold text-xl">Lovable</span>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" className="bg-white/80">
@@ -50,7 +50,7 @@ export function Home() {
         <form onSubmit={handleSubmit} className="w-full max-w-3xl bg-white/90 rounded-lg shadow-lg p-4 mb-8">
           <div className="mb-4">
             <Input
-              placeholder="Ask Bolt to create a..."
+              placeholder="Ask Lovable to create a..."
               className="w-full p-4 text-lg border-none bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
               value={inputValue}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
