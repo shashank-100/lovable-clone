@@ -1,5 +1,5 @@
 ![App UI Screenshot](frontend/public/screenshots/Screenshot-2025-05-18.png)
-*Main UI of the Lovable Clone app*
+*Lovable builder*
 
 ![File Explorer Screenshot](frontend/public/screenshots/photo-2025-05-18-14-51-28.jpeg)
 *Project file explorer and code preview*
