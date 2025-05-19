@@ -1,3 +1,9 @@
+# Lovable
+
+![Homepage Screenshot](public/screenshots/homepage.png)
+
+Build something amazing... 
+
 ![App UI Screenshot](frontend/public/screenshots/Screenshot-2025-05-18.png)
 *Lovable builder*
 
