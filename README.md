@@ -1,6 +1,6 @@
 # Lovable
 
-![Homepage Screenshot](public/screenshots/homepage.png)
+![Homepage Screenshot](frontend/public/screenshots/homepage.png)
 
 Build something amazing... 
 
