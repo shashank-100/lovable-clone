@@ -29,12 +29,6 @@ export function Home() {
           <img src={logo} alt="Lovable logo" className="h-6 w-6 rounded-md object-cover" />
           <span className="font-bold text-xl">Lovable</span>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="bg-white/80">
-            Sign in
-          </Button>
-          <Button className="bg-black text-white hover:bg-black/80">Sign up</Button>
-        </div>
       </header>
 
       <main className="container mx-auto px-4 py-12 flex flex-col items-center flex-grow">
