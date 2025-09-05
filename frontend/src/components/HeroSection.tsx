@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { Paperclip, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -18,63 +18,70 @@ export function HeroSection({ prompt, setPrompt }: HeroSectionProps) {
   };
 
   return (
-    <header className="relative z-10 px-6 py-24 md:pt-48 pt-24 md:mb-20">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className=""></div>
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-200px)] px-6 pt-20 pb-20">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 0.5 }}
-          className="space-y-6 pt-10 sm:pt-0"
+          transition={{ duration: 0.8 }}
+          className="space-y-8 mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
-            Transform Ideas into Websites
-            <br />
-            <div className='flex flex-col'>
-            <span className="bg-clip-text text-blue-400 font-semibold bg-gradient-to-r from-blue-400 to-blue-600">
-              Powered by <span className='text-blue-500'>A!</span>
-            </span>
-            </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight">
+            What should we build today?
           </h1>
 
-          <p className="text-base  font-normal text-gray-400 max-w-2xl mx-auto">
-            Simply describe, create, and customize your website in seconds with
-            <span className="text-blue-400 font-semibold"> Bolt</span>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Create stunning apps & websites by chatting with AI.
           </p>
         </motion.div>
 
         <motion.form
           onSubmit={handleSubmit}
-          className="mt-12 max-w-2xl mx-auto"
+          className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="backdrop-blur-md bg-gray-900/50 rounded-xl shadow-2xl border border-gray-800/80 overflow-hidden">
+          <div className="relative bg-gray-900/95 backdrop-blur-sm rounded-xl border border-gray-700/50 overflow-hidden shadow-2xl">
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe the website you want to build..."
-              className="w-full h-32 p-5 bg-transparent text-gray-100 rounded-lg focus:outline-none resize-none placeholder-gray-500"
+              placeholder="Type your idea and we'll build it together."
+              className="w-full h-32 p-6 bg-transparent text-white resize-none focus:outline-none placeholder-gray-500 text-base"
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
+                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
                   handleSubmit(e);
                 }
               }}
             />
-            <div className="p-3">
+            <div className="flex items-center justify-between p-4 border-t border-gray-700/50">
+              <div className="flex items-center space-x-4">
+                <button
+                  type="button"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+                >
+                  <Paperclip className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
+                >
+                  <Zap className="w-5 h-5" />
+                </button>
+              </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-1.5 bg-blue-500/90 hover:bg-blue-600 text-white py-2.5 px-5 rounded-md font-medium text-sm transition-all border border-blue-400/40 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
+                disabled={!prompt.trim()}
+                className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                <span>Generate Website</span>
-                <ArrowRight className="w-4 h-4" />
+                Submit
               </button>
             </div>
           </div>
+          
         </motion.form>
       </div>
-    </header>
+    </div>
   );
 }
