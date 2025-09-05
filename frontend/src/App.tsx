@@ -1,17 +1,23 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Home } from './pages/Home';
 import { Builder } from './pages/Builder';
-import { parseXml } from './steps';
+import { AppProvider } from './context/AppContext';
+import './index.css';
 
 function App() {
+  const isProduction = process.env.NODE_ENV === 'production';
+  
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/builder" element={<Builder />} />
-      </Routes>
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        {isProduction && <Analytics />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/builder" element={<Builder />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 
